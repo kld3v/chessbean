@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreGameRequest;
 use App\Http\Requests\UpdateGameRequest;
 use App\Models\Game;
+use Illuminate\Support\Facades\Log;
 
 class GameController extends Controller
 {
@@ -13,37 +14,39 @@ class GameController extends Controller
      */
     public function index()
     {
-        //
+        return "Hello world";
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
-     */
+    */ 
+
     public function store(StoreGameRequest $request)
     {
-        //
+       try {
+        $game = new Game([
+            'userID_white' => $request->input('userID_white'),
+            'userID_black' => $request->input('userID_black'),
+            'winner_id'=>null
+        ]);
+
+        if($game->save()){
+            return response()->json(['message' => 'Game created!', 'game'=>$game], 201);
+        }
+
+        return response()->json(['message' => 'Game not created!'], 500);
+        
+       } catch (\Throwable $th) {
+            Log::error('Error creating game: ' . $th->getMessage());
+           return response()->json(['message' => 'Game not created!'], 500);
+       }
     }
 
     /**
      * Display the specified resource.
      */
     public function show(Game $game)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Game $game)
     {
         //
     }

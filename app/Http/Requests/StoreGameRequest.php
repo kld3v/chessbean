@@ -6,13 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreGameRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return false;
-    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -22,7 +15,23 @@ class StoreGameRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'userID_white' => 'required|exists:users,id',
+            'userID_black' => 'required|exists:users,id',
+        ];
+    }
+
+       /**
+     * Get the custom validation messages.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'userID_white.required' => 'The white user ID is required.',
+            'userID_white.exists' => 'The white user ID must be a valid user.',
+            'userID_black.required' => 'The black user ID is required.',
+            'userID_black.exists' => 'The black user ID must be a valid user.',
         ];
     }
 }
