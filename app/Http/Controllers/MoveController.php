@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreMoveRequest;
-use App\Http\Requests\UpdateMoveRequest;
-use App\Models\Move;
+use Illuminate\Http\Request;
 
 class MoveController extends Controller
 {
@@ -27,7 +25,7 @@ class MoveController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreMoveRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -35,7 +33,7 @@ class MoveController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Move $move)
+    public function show(string $id)
     {
         //
     }
@@ -43,7 +41,7 @@ class MoveController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Move $move)
+    public function edit(string $id)
     {
         //
     }
@@ -51,7 +49,7 @@ class MoveController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMoveRequest $request, Move $move)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -59,7 +57,7 @@ class MoveController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Move $move)
+    public function destroy(string $id)
     {
         //
     }
