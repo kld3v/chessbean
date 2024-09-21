@@ -17,10 +17,18 @@ class GameController extends Controller
         return "Hello world";
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
 
     /**
      * Store a newly created resource in storage.
-    */ 
+    */
 
     public function store(StoreGameRequest $request)
     {
@@ -36,7 +44,7 @@ class GameController extends Controller
         }
 
         return response()->json(['message' => 'Game not created!'], 500);
-        
+
        } catch (\Throwable $th) {
             Log::error('Error creating game: ' . $th->getMessage());
            return response()->json(['message' => 'Game not created!'], 500);
