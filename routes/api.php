@@ -12,4 +12,3 @@ use App\Http\Controllers\MoveController;
 /*   'games' => GameController::class, */
 /*   'moves' => MoveController::class, */
 /* ]); */
-
